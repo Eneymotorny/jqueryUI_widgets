@@ -1,0 +1,41 @@
+h1 {
+	text-align: center;
+	margin: 50px;
+}
+
+label {
+	margin: 0 3px 0 3px;
+}
+
+main {
+	width: 70%;
+	margin: 30px auto;
+	min-width: 670px;
+}
+
+.inp-name-group {
+	font-size: 18px;
+}
+.inp-name-elem {
+	font-size: 16px;
+}
+select[name=selType] {
+	width: 100px;
+}
+fieldset {
+	padding-top: 20px;
+	margin-bottom: 15px;
+}
+
+.btn-add-new-f, .btn-add-new-g {
+	float: right;
+}
+.field-container {
+	display: inline-block;
+	width: 70%;
+}
+.inp-name-elem {
+	width: 100%;
+	margin: 10px;
+
+}
