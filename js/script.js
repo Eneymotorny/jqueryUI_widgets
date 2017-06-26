@@ -6,6 +6,7 @@ $(function() {
 
 	function addSampleGroup(target) {
 		var countFields = 0;
+		var idName = 'id' + (new Date().getTime());
 
 		var $group =
 			$('<fieldset>').appendTo( $(target));
@@ -18,18 +19,17 @@ $(function() {
 
 		var $groupName =
 			$('<label>')
-				.append('<input class="inp-name-group" type="text" maxlength="30" placeholder="Название группы">')
+				.append('<input class="inp-name-group" type="text" maxlength="50" placeholder="Название группы">')
 				.appendTo($legend);
 		var $radRadio =
-			$('<label>Radio <input type="radio" name="selectType"></label>')
+			$('<label class="hidden">Radio <input type="radio" name="' + idName + '"></label>')
 				.appendTo($legend);
 		var $radCheckbox =
-			$('<label>Checkbox <input type="radio" checked name="selectType"></label>')
+			$('<label>Checkbox <input type="radio" checked name="' + idName + '"></label>')
 				.appendTo($legend);
 		var $checkIcons =
 			$('<label>Иконки <input type="checkbox" name="with-icons"></label>')
 				.appendTo($legend);
-		var $btnSaveField =
 			$('<button class="btn-save">Сохранить группу</button>')
 				.on('click', function () {
 					var group = {
@@ -46,13 +46,11 @@ $(function() {
 							return has
 						}
 					};
-
 					if (group.name === null || group.name.trim() === '') {
 						return
 					} else if (group.hasEmptyFields()) {
 						return
 					}
-
 					$legend.text(group.name).addClass('ready');
 					$btnAddF.remove();
 
@@ -65,7 +63,6 @@ $(function() {
 									.text(group.fields[0].value)
 									.append('<input type="radio" checked name="' + idName + '" style=" display: none">')
 							}
-
 							for( var i = 0; i < group.fields.length; i++ ) {
 								$(group.fields[i])
 									.parent('label')
@@ -93,14 +90,28 @@ $(function() {
 		var $btnAddF =
 			$('<button class="btn-add-new-f">Добавить новое поле</button>')
 				.on('click', function () {
-					if (countFields > 9) return;
 					addElemInp();
+					if (countFields > 9) {
+						$btnAddF.remove();
+					}
 				})
 				.appendTo($group);
-
+		if (countGroups < 9) {
+			var $btnAddG =
+				$('<button class="btn-add-new-g">Добавить новую группу</button>')
+					.on('click', function () {
+						addSampleGroup('main');
+						$btnAddG.remove();
+					})
+				.appendTo($group);
+		}
 		function addElemInp() {
-			$elemName = $('<label><input class="inp-name-elem" type="text" maxlength="30" placeholder="Название элемента"></label>')
+			$elemName =
+				$('<label><input class="inp-name-elem" type="text" size="50" ' +
+					'maxlength="80" placeholder="Название элемента"></label>')
 				.appendTo($fieldsContainer);
+			$($radRadio).removeClass('hidden');
+			$('html, body').animate({ scrollTop: ($elemName).offset().top }, 500);
 			countFields++
 		}
 
@@ -115,15 +126,13 @@ $(function() {
 			showLabel: false
 		});
 		$group.find('button.btn-add-new-g').button({
-			icon: "ui-icon-plusthick",
+			icon: "ui-icon-circle-plus",
 			showLabel: false
 		});
 		$group.find('[name=selType]').selectmenu();
-
+		$('html, body').animate({ scrollTop: ($group).offset().top }, 800);
 		countGroups++;
 	}
-
 	addSampleGroup('main');
-
 });
 

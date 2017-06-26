@@ -3,12 +3,13 @@ h1 {
 	margin: 30px;
 }
 label {
-	margin: 0 3px 0 3px;
+	margin: 4px;
 }
 main {
 	width: 70%;
 	margin: 30px auto;
-	min-width: 670px;
+	min-width: 700px;
+	padding: 20px;
 }
 legend.ready {
 	font-size: 20px;
@@ -28,14 +29,30 @@ legend.ready {
 	width: 100px;
 }
 fieldset {
+	position: relative;
 	padding-top: 20px;
 	margin-bottom: 15px;
+	background-color: #f6f6f6;
 }
-
-.btn-add-new-f, .btn-add-new-g {
-	float: right;
+.btn-add-new-f {
+	position: absolute;
+	top: 65px;
+	right: 25px;
+}
+.btn-add-new-g {
+	position: absolute;
+	bottom: -50px;
+	right: 25px;
 }
 .field-container {
-	display: inline-block;
-	width: 70%;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 60%;
+}
+.field-container label {
+	width: auto;
+}
+.hidden {
+	display: none;
 }
