@@ -1,7 +1,7 @@
 'use strict';
 
 $(function() {
-
+//============= CHECKBOXRADIO start========>
 	var countGroups = 0;
 
 	function addSampleGroup(target) {
@@ -57,12 +57,6 @@ $(function() {
 					if (group.radio) {
 						(function () {
 							var idName = 'id' + (new Date().getTime());
-							if (group.fields.length === 1) {
-								$(group.fields[0])
-									.parent('label')
-									.text(group.fields[0].value)
-									.append('<input type="radio" checked name="' + idName + '" style=" display: none">')
-							}
 							for( var i = 0; i < group.fields.length; i++ ) {
 								$(group.fields[i])
 									.parent('label')
@@ -100,7 +94,7 @@ $(function() {
 			var $btnAddG =
 				$('<button class="btn-add-new-g">Добавить новую группу</button>')
 					.on('click', function () {
-						addSampleGroup('main');
+						addSampleGroup('#checkboxradio');
 						$btnAddG.remove();
 					})
 				.appendTo($group);
@@ -111,11 +105,10 @@ $(function() {
 					'maxlength="80" placeholder="Название элемента"></label>')
 				.appendTo($fieldsContainer);
 			$($radRadio).removeClass('hidden');
-			$('html, body').animate({ scrollTop: ($elemName).offset().top }, 500);
+			$elemName.focus();
 			countFields++
 		}
-
-// ==================== jQueryUI ====================
+//========================== create group of checkbox-radio end======<
 		$group.find('[type=checkbox], [type=radio]').checkboxradio();
 		$group.find('button.btn-save').button({
 			icon: "ui-icon-check",
@@ -131,8 +124,55 @@ $(function() {
 		});
 		$group.find('[name=selType]').selectmenu();
 		$('html, body').animate({ scrollTop: ($group).offset().top }, 800);
+		$groupName.focus();
 		countGroups++;
 	}
-	addSampleGroup('main');
+	addSampleGroup('#checkboxradio');
+//============= CHECKBOXRADIO end ========<
+//============= DATEPICKER start =========<
+
+	function actDateSetting() {
+		var $aside = $('.datepicker fieldset');
+			$aside.find('[type=checkbox], [type=radio]').checkboxradio()
+				.on('change', function () {
+					datePick()
+				});
+			$aside.find('select')
+				.on('change', function () {
+					console.log('kjsdfhjk');
+					datePick()
+				});
+
+		function datePick() {
+			var $dtpkr = $('#datepicker');
+			$dtpkr.datepicker('destroy');
+
+			var $anothMonth = $('#anothMonts').is(":checked"),
+				$dropList = $('#dropList').is(":checked");
+
+			var dateSettings = {
+				showOtherMonths : $anothMonth,
+				selectOtherMonths : $anothMonth,
+				showButtonPanel : $('#addButtons').is(":checked"),
+				inline : $('#inline').is(":checked"),
+				changeYear: $dropList,
+				changeMonth: $dropList,
+				numberOfMonths: $('#multiple').is(":checked")? 3 : 1 ,
+				showAnim : $('#anim').val(),
+				dateFormat : $('#format').val()
+			};
+			if (dateSettings.inline) {
+				$dtpkr.replaceWith('<div id="datepicker"></div>')
+			} else {
+				$dtpkr.replaceWith('<input id="datepicker"> </input>')
+			}
+
+			$('#datepicker').datepicker(dateSettings)
+		}
+	}
+	actDateSetting();
+
+
+//============= DATEPICKER end ===========<
 });
 

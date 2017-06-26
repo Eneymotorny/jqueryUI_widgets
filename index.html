@@ -9,7 +9,60 @@
 <body>
 	<h1>Widgets</h1>
 
-	<main></main>
+	<main>
+		<div id="checkboxradio">
+			<h3>Checkboxradio</h3>
+		</div>
+
+		<div class="datepicker">
+			<h3>Datepicker</h3>
+			<fieldset>
+				<legend class="ready">Настройки календаря</legend>
+				<label>Отображать соседние месяцы
+					<input type="checkbox" id="anothMonts">
+				</label>
+				<label>Добавить Кнопки
+					<input type="checkbox" id="addButtons">
+				</label>
+				<label>Без поля ввода
+					<input type="checkbox" id="inline">
+				</label>
+				<label>Выпадающий список года и месяца
+					<input type="checkbox" id="dropList">
+				</label>
+				<label>Показывать несколько месяцев
+					<input type="checkbox" id="multiple">
+				</label><br>
+				<label> Анимация
+					<select id="anim">
+						<option value="show">Show (default)</option>
+						<option value="slideDown">Slide down</option>
+						<option value="fadeIn">Fade in</option>
+						<option value="blind">Blind (UI Effect)</option>
+						<option value="bounce">Bounce (UI Effect)</option>
+						<option value="clip">Clip (UI Effect)</option>
+						<option value="drop">Drop (UI Effect)</option>
+						<option value="fold">Fold (UI Effect)</option>
+						<option value="slide">Slide (UI Effect)</option>
+						<option value="">None</option>
+					</select>
+				</label>
+				<label>Формат даты
+					<select id="format">
+						<option value="mm/dd/yy">Default - mm/dd/yy</option>
+						<option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+						<option value="d M, y">Short - d M, y</option>
+						<option value="d MM, y">Medium - d MM, y</option>
+						<option value="DD, d MM, yy">Full - DD, d MM, yy</option>
+						<option value="&apos;day&apos; d &apos;of&apos; MM &apos;in the year&apos; yy">With text - 'day' d 'of' MM 'in the year' yy</option>
+					</select>
+				</label>
+
+			</fieldset>
+			<label><input type="text" id="datepicker"></label>
+		</div>
+	</main>
+
 
 	<script src="lib/jquery/dist/jquery.min.js"></script>
 	<script src="lib/jquery-ui/jquery-ui.min.js"></script>

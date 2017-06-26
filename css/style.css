@@ -32,7 +32,7 @@ fieldset {
 	position: relative;
 	padding-top: 20px;
 	margin-bottom: 15px;
-	background-color: #f6f6f6;
+	background-color: #f9f9f9;
 }
 .btn-add-new-f {
 	position: absolute;
@@ -55,4 +55,36 @@ fieldset {
 }
 .hidden {
 	display: none;
+}
+
+#checkboxradio, .datepicker {
+	padding: 20px 10px 50px 10px;
+	margin-bottom: 30px;
+	border: 1px dashed silver;
+	border-radius: 5px;
+}
+h3 {
+	margin-top: 0;
+	color: silver;
+	text-align: right;
+}
+
+.datepicker {
+	overflow: auto;
+}
+
+.datepicker fieldset {
+	width: 70%;
+	min-width: 600px;
+	margin: 10px auto 50px auto;
+
+}
+.datepicker fieldset label {
+	display: inline-block;
+}
+.ui-selectmenu-button {
+	margin: 4px;
+}
+#datepicker {
+	margin: 0 40px;
 }
